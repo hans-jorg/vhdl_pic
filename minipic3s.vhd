@@ -48,6 +48,7 @@ alias IR_OPTYPE:        std_logic_vector(1 downto 0) is ir(13 downto 12);
 alias IR_REG:           std_logic_vector(6 downto 0) is ir(6 downto 0);
 alias IR_OPREG:         std_logic_vector(3 downto 0) is ir(11 downto 8);
 alias IR_OPJUMP:        std_logic is ir(11);
+alias IR_ADDR:          std_logic_vector(10 downto 0) is ir(10 downto 0);
 -- sinal para
 signal opnd: unsigned(7 downto 0);
 begin
@@ -94,7 +95,7 @@ begin
                     pc <= pc + 1;
                 when OP_JMP_TYPE => -- Instrução de salto
                     if IR_OPJUMP = OP_JUMP then
-                        pc <= unsigned(ir(10 downto 0));
+                        pc <= unsigned(IR_ADDR);
                     else
                         null;
                     end if;

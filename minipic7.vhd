@@ -64,6 +64,7 @@ alias IR_OPBIT:         std_logic_vector(1 downto 0) is ir(11 downto 10);
 alias IR_BITN:          std_logic_vector(2 downto 0) is ir(9 downto 7);
 alias IR_DIR:           std_logic is ir(7);
 alias IR_VAL:           std_logic_vector(7 downto 0) is ir(7 downto 0);
+alias IR_ADDR:          std_logic_vector(10 downto 0) is ir(10 downto 0);
 -- campos do sr
 alias sr:               unsigned(7 downto 0) is f(3);
 alias flag_c:           std_logic is sr(0);
@@ -193,7 +194,7 @@ begin
                     end if;
                 when OP_JMP_TYPE => -- Instrução de salto
                     if IR_OPJUMP = OP_JUMP then
-                        pc <= unsigned(ir(10 downto 0));
+                        pc <= unsigned(IR_ADDR);
                     else
                         null;
                     end if;
